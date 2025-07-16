@@ -1,0 +1,11 @@
+package com.parameta.pruebatecnicaparameta.service.interfaces;
+
+import com.parameta.pruebatecnicaparameta.persistence.entity.Empleado;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+
+@Service
+public interface TiempoService {
+    String calcularTiempo(LocalDate fecha);
+}
