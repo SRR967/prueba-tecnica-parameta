@@ -22,7 +22,6 @@ public class EmpleadoEndPoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "EmpleadoRequest")
     @ResponsePayload
     public EmpleadoResponse guardarEmpleado(@RequestPayload EmpleadoRequest request) {
-        // Convertir EmpleadoRequest (generado por JAXB) a tu DTO si es necesario
         empleadoSoapService.registrarEmpleado(request);
 
         // Usar la clase EmpleadoResponse generada por JAXB

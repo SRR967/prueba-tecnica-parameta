@@ -15,7 +15,7 @@
                 <xs:element name="fechaNacimiento" type="xs:string"/>
                 <xs:element name="fechaVinculacion" type="xs:string"/>
                 <xs:element name="cargo" type="xs:string"/>
-                <xs:element name="sueldo" type="xs:double"/>
+                <xs:element name="salario" type="xs:double"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
