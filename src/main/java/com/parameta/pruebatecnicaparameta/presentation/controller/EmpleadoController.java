@@ -14,7 +14,6 @@ import java.time.LocalDate;
 @RequestMapping("/api")
 public class EmpleadoController {
 
-    private final TiempoService tiempoService;
 
 
 }

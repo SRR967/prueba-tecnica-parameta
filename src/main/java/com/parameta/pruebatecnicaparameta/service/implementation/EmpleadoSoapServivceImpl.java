@@ -4,8 +4,11 @@ import com.parameta.pruebatecnicaparameta.persistence.repository.EmpleadoReposit
 import com.parameta.pruebatecnicaparameta.presentation.dto.EmpleadoSoapResponse;
 import com.parameta.pruebatecnicaparameta.service.interfaces.EmpleadoSoapService;
 import com.parameta.pruebatecnicaparameta.util.mapper.EmpleadoMapper;
+import com.parameta.pruebatecnicaparameta.wsdl.EmpleadoRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class EmpleadoSoapServivceImpl implements EmpleadoSoapService {
 
@@ -13,7 +16,7 @@ public class EmpleadoSoapServivceImpl implements EmpleadoSoapService {
     private final EmpleadoMapper empleadoMapper;
 
     @Override
-    public String registrarEmpleado(EmpleadoSoapResponse request) {
+    public String registrarEmpleado(EmpleadoRequest request) {
         empleadoRepository.save(empleadoMapper.SoapToEntity(request));
         return request.getNumeroDocumento();
     }
