@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 
 public interface EmpleadoSoapService {
 
-    String registrarEmpleado(EmpleadoRequest request);
+    String registrarEmpleado(EmpleadoRequest request)throws Exception;
 }

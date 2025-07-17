@@ -5,6 +5,6 @@ import com.parameta.pruebatecnicaparameta.presentation.dto.EmpleadoResponseDTO;
 
 public interface EmpleadoService {
 
-    EmpleadoResponseDTO procesarEmpleado(EmpleadoRequestDTO dto);
+    EmpleadoResponseDTO procesarEmpleado(EmpleadoRequestDTO dto)throws  Exception;
 
 }

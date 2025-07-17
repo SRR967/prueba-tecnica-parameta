@@ -21,7 +21,7 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 
 
     @Override
-    public EmpleadoResponseDTO procesarEmpleado(EmpleadoRequestDTO dto){
+    public EmpleadoResponseDTO procesarEmpleado(EmpleadoRequestDTO dto)throws Exception{
         validadorCampos.validar(dto);
 
         empleadoSoapClient.enviarEmpleado(empleadoMapper.dtoToSoap(dto));

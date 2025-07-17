@@ -21,7 +21,7 @@ public class EmpleadoEndPoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "EmpleadoRequest")
     @ResponsePayload
-    public EmpleadoResponse guardarEmpleado(@RequestPayload EmpleadoRequest request) {
+    public EmpleadoResponse guardarEmpleado(@RequestPayload EmpleadoRequest request)throws  Exception {
         empleadoSoapService.registrarEmpleado(request);
 
         // Usar la clase EmpleadoResponse generada por JAXB
