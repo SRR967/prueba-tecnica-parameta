@@ -10,12 +10,14 @@ import java.time.Period;
 @Service
 @RequiredArgsConstructor
 public class TiempoServiceImpl implements TiempoService {
+
     @Override
-    public String calcularTiempo(LocalDate fecha) {
-        return format(Period.between(fecha, LocalDate.now()));
+    public String calcularTiempo(String fecha) {
+        LocalDate fechaConvertida = LocalDate.parse(fecha);
+        return format(Period.between(fechaConvertida, LocalDate.now()));
     }
 
     private String format(Period periodo) {
-        return periodo.getYears() + "años -" + periodo.getMonths() + "meses -" + periodo.getDays() + "dias";
+        return periodo.getYears() + " años - " + periodo.getMonths() + " meses - " + periodo.getDays() + " días";
     }
 }

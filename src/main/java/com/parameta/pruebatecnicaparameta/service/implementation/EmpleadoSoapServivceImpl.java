@@ -17,7 +17,7 @@ public class EmpleadoSoapServivceImpl implements EmpleadoSoapService {
 
     @Override
     public String registrarEmpleado(EmpleadoRequest request) {
-        empleadoRepository.save(empleadoMapper.SoapToEntity(request));
+        empleadoRepository.save(empleadoMapper.soapToEntity(request));
         return request.getNumeroDocumento();
     }
 }
