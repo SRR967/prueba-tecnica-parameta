@@ -1,7 +1,5 @@
 package com.parameta.pruebatecnicaparameta.service.client;
 
-import com.parameta.pruebatecnicaparameta.config.SoapClientConfig;
-import com.parameta.pruebatecnicaparameta.persistence.repository.EmpleadoRepository;
 import com.parameta.pruebatecnicaparameta.wsdl.EmpleadoRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
