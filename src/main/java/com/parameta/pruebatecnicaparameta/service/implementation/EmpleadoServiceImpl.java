@@ -7,6 +7,7 @@ import com.parameta.pruebatecnicaparameta.service.interfaces.EmpleadoService;
 import com.parameta.pruebatecnicaparameta.service.interfaces.TiempoService;
 import com.parameta.pruebatecnicaparameta.util.ValidadorCampos;
 import com.parameta.pruebatecnicaparameta.util.mapper.EmpleadoMapper;
+import com.parameta.pruebatecnicaparameta.wsdl.EmpleadoRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +23,19 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 
     @Override
     public EmpleadoResponseDTO procesarEmpleado(EmpleadoRequestDTO dto)throws Exception{
-        validadorCampos.validar(dto);
-
-        empleadoSoapClient.enviarEmpleado(empleadoMapper.dtoToSoap(dto));
-
-        String anios= tiempoService.calcularTiempo(dto.fechaNacimiento());
-        String tiempoVinculacion= tiempoService.calcularTiempo(dto.fechaVinculacion());
-        return new EmpleadoResponseDTO(dto,anios,tiempoVinculacion);
-
-
+        validarYEnviar(dto);
+        return construirRespuesta(dto);
     }
+    private void validarYEnviar(EmpleadoRequestDTO dto) {
+        validadorCampos.validar(dto);
+        EmpleadoRequest empleadoRequest = empleadoMapper.dtoToSoap(dto);
+        empleadoSoapClient.enviarEmpleado(empleadoRequest);
+    }
+
+    private EmpleadoResponseDTO construirRespuesta(EmpleadoRequestDTO dto) throws Exception {
+        String edad = tiempoService.calcularTiempo(dto.fechaNacimiento());
+        String tiempoVinc = tiempoService.calcularTiempo(dto.fechaVinculacion());
+        return new EmpleadoResponseDTO(dto, edad, tiempoVinc);
+    }
+
 }

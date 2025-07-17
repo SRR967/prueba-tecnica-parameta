@@ -24,7 +24,6 @@ public class EmpleadoEndPoint {
     public EmpleadoResponse guardarEmpleado(@RequestPayload EmpleadoRequest request)throws  Exception {
         empleadoSoapService.registrarEmpleado(request);
 
-        // Usar la clase EmpleadoResponse generada por JAXB
         ObjectFactory factory = new ObjectFactory();
         EmpleadoResponse response = factory.createEmpleadoResponse();
         response.setMensaje("Empleado guardado exitosamente");
