@@ -65,12 +65,12 @@ public class ValidadorCamposTest {
         );
 
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> validador.validar(dto));
-        assertEquals("La fecha de nacimiento no puede ser futura", ex.getMessage());
+        assertEquals("La fecha de nacimiento no puede ser una fecha futura.", ex.getMessage());
     }
 
     @Test
     @Order(4)
-    @DisplayName("❌ Lanza excepción si el empleado es menor de edad")
+    @DisplayName(" Lanza excepción si el empleado es menor de edad")
     void debeLanzarErrorPorMenorEdad() {
         String fechaMenor = java.time.LocalDate.now().minusYears(17).toString();
 
@@ -85,7 +85,7 @@ public class ValidadorCamposTest {
 
     @Test
     @Order(5)
-    @DisplayName("❌ Lanza excepción si la fecha de nacimiento es posterior a la de vinculación")
+    @DisplayName(" Lanza excepción si la fecha de nacimiento es posterior a la de vinculacion")
     void debeLanzarErrorSiNacimientoEsMayorAVinculacion() {
         EmpleadoRequestDTO dto = new EmpleadoRequestDTO(
                 "Santiago", "Ramón", "CC", "123456789",
@@ -93,7 +93,7 @@ public class ValidadorCamposTest {
         );
 
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> validador.validar(dto));
-        assertEquals("La fecha de nacimiento no puede ser posterior a la de vinculación", ex.getMessage());
+        assertEquals("La fecha de nacimiento no puede ser posterior a la de vinculación.", ex.getMessage());
     }
 
 
