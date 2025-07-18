@@ -34,20 +34,21 @@ public class ValidadorCampos {
         }
     }
 
-    private void validarFechas(LocalDate nacimiento, LocalDate vinculacion) {
-        LocalDate hoy = LocalDate.now();
-        if (nacimiento.isAfter(hoy)) {
-            throw new IllegalArgumentException("La fecha de nacimiento no puede ser futura");
-        }
-
-        if (vinculacion.isAfter(hoy)) {
-            throw new IllegalArgumentException("La fecha de vinculación no puede ser futura");
-        }
-
-        if (nacimiento.isAfter(vinculacion)) {
-            throw new IllegalArgumentException("La fecha de nacimiento no puede ser posterior a la de vinculación");
+    private void validarFechaNoFutura(LocalDate fecha, String campo) {
+        if (fecha.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("La " + campo + " no puede ser una fecha futura.");
         }
     }
+
+    private void validarFechas(LocalDate nacimiento, LocalDate vinculacion) {
+        validarFechaNoFutura(nacimiento, "fecha de nacimiento");
+        validarFechaNoFutura(vinculacion, "fecha de vinculación");
+
+        if (nacimiento.isAfter(vinculacion)) {
+            throw new IllegalArgumentException("La fecha de nacimiento no puede ser posterior a la de vinculación.");
+        }
+    }
+
 
     private void validarMayorDeEdad(LocalDate nacimiento) {
         if (Period.between(nacimiento, LocalDate.now()).getYears() < 18) {
