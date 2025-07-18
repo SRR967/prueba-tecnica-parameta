@@ -3,8 +3,6 @@ package com.parameta.pruebatecnicaparameta.util.mapper;
 
 import com.parameta.pruebatecnicaparameta.persistence.entity.Empleado;
 import com.parameta.pruebatecnicaparameta.presentation.dto.EmpleadoRequestDTO;
-import com.parameta.pruebatecnicaparameta.presentation.dto.EmpleadoResponseDTO;
-import com.parameta.pruebatecnicaparameta.presentation.dto.EmpleadoSoapResponse;
 import com.parameta.pruebatecnicaparameta.wsdl.EmpleadoRequest;
 import org.springframework.stereotype.Component;
 
@@ -14,9 +12,17 @@ import java.time.LocalDate;
 public class EmpleadoMapper {
 
     public Empleado soapToEntity(EmpleadoRequest soap) {
-        return new Empleado(soap.getNombres(), soap.getApellidos(), soap.getTipoDocumento(),
-                soap.getNumeroDocumento(), LocalDate.parse(soap.getFechaNacimiento()), LocalDate.parse(soap.getFechaVinculacion()),
-                soap.getCargo(), soap.getSalario());
+        Empleado empleado = Empleado.builder()
+                .nombres(soap.getNombres())
+                .apellidos(soap.getApellidos())
+                .tipoDocumento(soap.getTipoDocumento())
+                .numeroDocumento(soap.getNumeroDocumento())
+                .fechaNacimiento(LocalDate.parse(soap.getFechaNacimiento()))
+                .fechaVinculacion(LocalDate.parse(soap.getFechaVinculacion()))
+                .cargo(soap.getCargo())
+                .salario(soap.getSalario())
+                .build();
+        return empleado;
     }
 
     public EmpleadoRequest dtoToSoap(EmpleadoRequestDTO dto) {

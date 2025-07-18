@@ -1,16 +1,15 @@
 package com.parameta.pruebatecnicaparameta.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
-@RequiredArgsConstructor
 @Data
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
