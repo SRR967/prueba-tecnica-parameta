@@ -2,6 +2,7 @@ package com.parameta.pruebatecnicaparameta.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -13,29 +14,30 @@ import java.time.LocalDate;
 public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
-    @NonNull
+    @Column(nullable = false, length = 50)
     private String nombres;
 
-    @NonNull
+    @Column(nullable = false, length = 50)
     private String apellidos;
 
-    @NonNull
+    @Column(nullable = false, length = 3)
     private String tipoDocumento;
 
-    @NonNull
+    @Column(nullable = false, unique = true, length = 12)
     private String numeroDocumento;
 
-    @NonNull
+    @Column(nullable = false)
     private LocalDate fechaNacimiento;
 
-    @NonNull
+    @Column(nullable = false)
     private LocalDate fechaVinculacion;
 
-    @NonNull
+    @Column(nullable = false, length = 100)
     private String cargo;
 
-    @NonNull
+    @Column(nullable = false, precision = 10, scale = 2)
     private Double salario;
 }
